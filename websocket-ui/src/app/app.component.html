@@ -1,0 +1,40 @@
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="connect">WebSocket connection:</label>
+          <button id="connect" *ngIf="!connected" (click)="connect()" class="btn btn-default" type="submit">Connect</button>
+          <button id="disconnect" *ngIf="connected" (click)="disconnect()" class="btn btn-default" type="submit" >Disconnect
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="name">What is your name?</label>
+          <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name">
+        </div>
+        <button id="send" (click)="sendName($event)" class="btn btn-default" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table id="conversation" class="table table-striped">
+        <thead>
+        <tr>
+          <th>Greetings</th>
+        </tr>
+        </thead>
+        <tbody id="greetings">
+        <tr *ngFor="let msg of messages">
+          {{msg.content}}
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
